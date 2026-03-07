@@ -57,7 +57,7 @@ async def on_message(message):
     async with message.channel.typing():
 
         response = ai.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o-mini", # Swap models hurr.
             messages=[
                 {"role": "system", "content": "You are a helpful Discord assistant."},
                 {"role": "user", "content": message.content}
@@ -67,12 +67,12 @@ async def on_message(message):
     reply = response.choices[0].message.content
 
     # Discord message limit
-    await message.channel.send(reply[:6000]) # Originally 2000, increase as needed
+    await message.channel.send(reply[:8000]) # Originally 2000, increase as needed
 
     await bot.process_commands(message)
 
 ##########################################################################
-# Commands
+# Non-(chatGPT) bot Commands
 
 @bot.command()
 async def hello(ctx):
@@ -89,7 +89,8 @@ async def ping(ctx):
 bot.run(TOKEN)
 
 ###################################################################################################################
-# Powershell command needed to initialize:
+# Powershell command(s) needed to initialize:
+
 # C:\Users\Karabakh\AppData\Local\Programs\Python\Python313\python.exe bot.py
 # 
 # python bot.py
