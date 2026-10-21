@@ -14,12 +14,13 @@ bytes_data = df["bytes"].dropna()
 #bytes_data = bytes_data[bytes_data > 0]
 
 
-
 # Display basic statistics
 print("Number of valid observations:", len(bytes_data))
 print("Sample median:", bytes_data.median())
 print("Sample mean:", bytes_data.mean())
 print("Sample mode:", bytes_data.mode())
+print("Maximum value:", df["bytes"].max())
+
 
 # Bootstrap confidence interval for the median
 sample = bytes_data.sample(
